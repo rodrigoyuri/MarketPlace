@@ -3,14 +3,14 @@
 
 @section('content')
 
-<h1>Criar Produto</h1>
+<h1>Criar Categoria</h1>
 
-<form action="{{route('admin.products.store')}}" method="post">
+<form action="{{route('admin.categories.store')}}" method="post">
     
     @csrf
 
     <div class="form-group">
-        <label for="">Nome do Produto</label>
+        <label for="">Nome da Categoria</label>
         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
 
         @error('name')
@@ -25,28 +25,6 @@
         <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}">
 
         @error('description')
-            <div class="invalid-feedback">
-                {{$message}}
-            </div>
-        @enderror
-    </div>
-
-    <div class="form-group">
-        <label for="">Conteúdo</label>
-        <textarea name="body" id="body" cols="30" rows="10" class="form-control @error('body') is-invalid @enderror">{{old('body')}}</textarea>
-
-        @error('body')
-            <div class="invalid-feedback">
-                {{$message}}
-            </div>
-        @enderror
-    </div>
-
-    <div class="form-group">
-        <label for="">Preço</label>
-        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" value="{{old('price')}}">
-
-        @error('price')
             <div class="invalid-feedback">
                 {{$message}}
             </div>

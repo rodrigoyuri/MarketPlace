@@ -33,7 +33,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -44,7 +44,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date = $request->all();
+
+        $category = $this->category;
+        $category->create($date);
+
+        flash('Categoria criada com Sucesso.')->success();
+        return redirect()->route('admin.categories.index');
+
     }
 
     /**

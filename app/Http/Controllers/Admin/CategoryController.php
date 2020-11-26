@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -42,7 +43,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $date = $request->all();
 
@@ -73,7 +74,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = $this->category::find($id);
+
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -85,7 +88,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $category = $this->category::find($id);
+        $category->update($data);
+
+        flash('Categoria Atualizada com Sucesso.')->success();
+        return redirect()->route('admin.categories.index');
     }
 
     /**

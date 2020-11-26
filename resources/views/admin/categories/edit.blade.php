@@ -3,40 +3,30 @@
 
 @section('content')
 
-<h1>Atualizar Produto</h1>
+<h1>Atualizar Categoria</h1>
 
-<form action="{{route('admin.products.update', ['product' => $product->id])}}" method="post">
+<form action="{{route('admin.categories.update', ['category' => $category->id])}}" method="post">
     
     @csrf
     @method("PUT")
 
     <div class="form-group">
         <label for="">Nome do Produto</label>
-        <input type="text" name="name" class="form-control" value="{{$product->name}}">
+        <input type="text" name="name" class="form-control" value="{{$category->name}}">
     </div>
 
     <div class="form-group">
         <label for="">Descrição</label>
-        <input type="text" name="description" class="form-control" value="{{$product->description}}">
-    </div>
-
-    <div class="form-group">
-        <label for="">Conteúdo</label>
-        <textarea name="body" id="body" cols="30" rows="10" class="form-control">{{$product->body}}</textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="">Preço</label>
-        <input type="text" name="price" class="form-control" value="{{$product->price}}">
+        <input type="text" name="description" class="form-control" value="{{$category->description}}">
     </div>
 
     <div class="form-group">
         <label for="">Slug</label>
-        <input type="text" name="slug" class="form-control" value="{{$product->slug}}">
+        <input type="text" name="slug" class="form-control" value="{{$category->slug}}">
     </div>
 
     <div>
-        <button type="submit" class="btn btn-lg btn-success">Atualizar Produto</button>
+        <button type="submit" class="btn btn-lg btn-success">Atualizar Categoria</button>
     </div>
 
 </form>

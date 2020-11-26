@@ -37,7 +37,7 @@
     </div>
 
     <div>
-        <button type="submit" class="btn btn-lg btn-success">Criar Produto</button>
+        <button type="submit" class="btn btn-lg btn-success">Criar Categoria</button>
     </div>
 
 </form>

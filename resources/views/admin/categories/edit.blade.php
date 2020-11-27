@@ -12,7 +12,13 @@
 
     <div class="form-group">
         <label for="">Nome do Produto</label>
-        <input type="text" name="name" class="form-control" value="{{$category->name}}">
+        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$category->name}}">
+
+        @error('name')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+        @enderror
     </div>
 
     <div class="form-group">

@@ -5,7 +5,7 @@
 
 <h1>Atualizar Produto</h1>
 
-<form action="{{route('admin.products.update', ['product' => $product->id])}}" method="post">
+<form action="{{route('admin.products.update', ['product' => $product->id])}}" method="post" enctype="multipart/form-data">
     
     @csrf
     @method("PUT")
@@ -61,6 +61,11 @@
                 <option value="{{$category->id}}" @if($product->categories->contains($category)) selected @endif>{{$category->name}}</option>
             @endforeach
         </select>
+    </div>
+
+    <div class="form-group">
+        <label for="">Fotos do Produto</label>
+        <input type="file" name="photos[]" id="" class="form-control" multiple>
     </div>
 
     <div class="form-group">

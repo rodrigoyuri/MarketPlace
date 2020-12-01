@@ -16,6 +16,9 @@
         @auth
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item @if(request()->is('admin/orders*')) active @endif">
+                    <a class="nav-link" href="{{route('admin.orders.my')}}">Meus Pedidos</a>
+                </li>
                 <li class="nav-item @if(request()->is('admin/stores*')) active @endif">
                     <a class="nav-link" href="{{route('admin.stores.index')}}">Loja</a>
                 </li>
@@ -46,6 +49,6 @@
     <div class="container">
         @include('flash::message')
         @yield('content')
-    </div>
+    </div>    
 </body>
 </html>

@@ -31,6 +31,9 @@ class UserRegisteredEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.user-registered');
+        return $this
+            ->subject('Conta Criada com Sucesso!')
+            ->replyTo('rodrigo33399@gmail.com')
+            ->view('emails.user-registered')->with(['user' => $this->user]);
     }
 }

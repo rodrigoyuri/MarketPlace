@@ -1,4 +1,4 @@
-function processPayment(token) {
+function processPayment(token, buttonTarget) {
 
     let data = {
         card_token: token,
@@ -17,6 +17,14 @@ function processPayment(token) {
         success: function(res) {
             toastr.success(res.data.message, 'Sucesso')
             window.location.href = `${urlThanks}?order=${res.data.message}`;
+        },
+        error: function(error) {
+            
+            buttonTarget.disabled = false;
+            buttonTarget.innerHTML = 'Efetuar Pagamento';
+
+            let message = JSON.parse(error.responseText);
+            document.querySelector('div.msg').innerHTML = showErrorMessages(message.data.message.error.message);
         }
     });
 }

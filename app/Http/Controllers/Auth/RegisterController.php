@@ -79,7 +79,7 @@ class RegisterController extends Controller
     {
         //Mail::to($user->email)->send(new UserRegisteredEmail($user));
 
-        if($user->role == 'ROLE_USER') {
+        if($user->role == 'ROLE_OWNER') {
             return redirect()->route('admin.stores.index');
         }
         if($user->role == 'ROLE_USER' && session()->has('cart')) {

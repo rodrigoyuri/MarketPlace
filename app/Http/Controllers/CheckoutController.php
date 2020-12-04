@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Payment\PagSeguro\CreditCard;
 use App\Store;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 
 class CheckoutController extends Controller
 {
@@ -39,7 +40,7 @@ class CheckoutController extends Controller
             $user = auth()->user();
             $cartItems = session()->get('cart');
             $stores = array_unique(array_column($cartItems, 'store_id'));
-            $reference = 'XPTO';
+            $reference = Uuid::uuid4();
 
             $creditCardPayment = new CreditCard($cartItems, $user, $dataPost, $reference);
             $result = $creditCardPayment->doPayment();
